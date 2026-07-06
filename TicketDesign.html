@@ -52,7 +52,6 @@
   .logo-box {
     width: 60px;
     height: 60px;
-   
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
@@ -88,6 +87,8 @@
       </td>
       <td>
         <h1 style="margin:0;">Department of National Parks and Wildlife Conservations</h1>
+         <h1 style="margin:0;">
+राष्ट्रिय निकुञ्ज तथा वन्यजन्तु संरक्षण विभाग</h1>
         <p style="margin:2px 0 0 0;">Entry Permit / Entry Fee Receipt</p>
         <!-- <p style="font-size:11px; margin:2px 0 0 0;">Schedule -2 (Relating to Rule 19, Sub-Rule[1] of Conservation Area Management Rules 2053)</p> -->
       </td>
@@ -96,105 +97,8 @@
 
   <hr>
 
-  <!-- ============================================================
-    PERSON 1 — copy this whole block (from <table> to </table>,
-    including the <hr> after it) to add another person.
-    Just replace the placeholder text with real details.
-  ============================================================= -->
-  <table>
-    <tr>
-      <td style="width:130px;">Full Name :</td>
-      <td><b>Full Name</b></td>
-      <td rowspan="8" style="width:100px; text-align:center;">
-        <div class="side-box">QR / Stamp</div>
-        <div style="margin-top:6px; font-size:12px; font-weight:bold;">Permit Number</div>
-      </td>
-    </tr>
-    <tr>
-      <td>Passport No. :</td>
-      <td><b>Passport Number</b></td>
-    </tr>
-    <tr>
-      <td>Nationality :</td>
-      <td><b>Nationality</b></td>
-    </tr>
-    <tr>
-      <td>Destination :</td>
-      <td><b>Destination</b></td>
-    </tr>
-    <tr>
-      <td>Entry-Exit Date :</td>
-      <td><b>Entry Date - Exit Date</b></td>
-    </tr>
-    <tr>
-      <td>Permit Code :</td>
-      <td><b>Permit Code</b></td>
-    </tr>
-    <tr>
-      <td>Date of Issue :</td>
-      <td><b>Date of Issue</b></td>
-    </tr>
-    <tr>
-      <td>Permit Cost :</td>
-      <td><b>Permit Cost</b></td>
-    </tr>
-    <tr>
-      <td colspan="3" style="padding-top:8px;">Authorized Signature: <b>Signatory Name</b></td>
-    </tr>
-  </table>
-
-  <hr>
-  <!-- ===================== end of Person 1 block ===================== -->
-
-  <!-- ============================================================
-    PERSON 2 — same design repeated. Copy this block again for a
-    3rd, 4th, etc. person. The Rules box always stays below all
-    the person blocks, at the very bottom of the page.
-  ============================================================= -->
-  <table>
-    <tr>
-      <td style="width:130px;">Full Name :</td>
-      <td><b>Full Name</b></td>
-      <td rowspan="8" style="width:100px; text-align:center;">
-        <div class="side-box">QR / Stamp</div>
-        <div style="margin-top:6px; font-size:12px; font-weight:bold;">Permit Number</div>
-      </td>
-    </tr>
-    <tr>
-      <td>Passport No. :</td>
-      <td><b>Passport Number</b></td>
-    </tr>
-    <tr>
-      <td>Nationality :</td>
-      <td><b>Nationality</b></td>
-    </tr>
-    <tr>
-      <td>Destination :</td>
-      <td><b>Destination</b></td>
-    </tr>
-    <tr>
-      <td>Entry-Exit Date :</td>
-      <td><b>Entry Date - Exit Date</b></td>
-    </tr>
-    <tr>
-      <td>Permit Code :</td>
-      <td><b>Permit Code</b></td>
-    </tr>
-    <tr>
-      <td>Date of Issue :</td>
-      <td><b>Date of Issue</b></td>
-    </tr>
-    <tr>
-      <td>Permit Cost :</td>
-      <td><b>Permit Cost</b></td>
-    </tr>
-    <tr>
-      <td colspan="3" style="padding-top:8px;">Authorized Signature: <b>Signatory Name</b></td>
-    </tr>
-  </table>
-
-  <hr>
-  <!-- ===================== end of Person 2 block ===================== -->
+  <!-- Person details: injected here by JS from the array below -->
+  <div id="persons-container"></div>
 
   <!-- Rules box (appears once, always at the bottom of the page) -->
   <table class="rules-table">
@@ -238,5 +142,79 @@
 
 </div>
 
+<script>
+  // ============================================================
+  // ADD / REMOVE PEOPLE HERE.
+  // Fill in this object, or copy it (add a comma after) for more
+  // than one person. Everything else on the page stays the same.
+  // ============================================================
+  const persons = [
+    {
+      fullName: "Gaurav Dhungana",
+      passportNo: "212121212121",
+      nationality: "Nepali",
+      destination: "Shivapuri",
+      entryExitDate: "121212",
+      permitCode: "2121212",
+      dateOfIssue: "21212121",
+      permitCost: "2121",
+      permitNumber: "21212",
+      signatory: "Dyland"
+    },
+    
+    
+  ];
+
+  function renderPerson(p) {
+    return `
+      <table>
+        <tr>
+          <td style="width:130px;">Full Name :</td>
+          <td><b>${p.fullName}</b></td>
+          <td rowspan="8" style="width:100px; text-align:center;">
+            <div class="side-box">QR / Stamp</div>
+            <div style="margin-top:6px; font-size:12px; font-weight:bold;">${p.permitNumber}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Passport No. :</td>
+          <td><b>${p.passportNo}</b></td>
+        </tr>
+        <tr>
+          <td>Nationality :</td>
+          <td><b>${p.nationality}</b></td>
+        </tr>
+        <tr>
+          <td>Destination :</td>
+          <td><b>${p.destination}</b></td>
+        </tr>
+        <tr>
+          <td>Entry-Exit Date :</td>
+          <td><b>${p.entryExitDate}</b></td>
+        </tr>
+        <tr>
+          <td>Permit Code :</td>
+          <td><b>${p.permitCode}</b></td>
+        </tr>
+        <tr>
+          <td>Date of Issue :</td>
+          <td><b>${p.dateOfIssue}</b></td>
+        </tr>
+        <tr>
+          <td>Permit Cost :</td>
+          <td><b>${p.permitCost}</b></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top:8px;">Authorized Signature: <b>${p.signatory}</b></td>
+        </tr>
+      </table>
+    `;
+  }
+
+  document.getElementById("persons-container").innerHTML = persons
+    .map(renderPerson)
+    .join("<hr>") + "<hr>";
+</script>
+
 </body>
-</html>
+</html> 
