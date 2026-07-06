@@ -1,331 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>ACAP Entry Permit</title>
-<style>
-  /* Simple, PDF-safe markup: tables + basic blocks only.
-     No flexbox, no grid, no @import fonts, no CSS variables. */
+  <head>
+    <meta charset="UTF-8" />
+    <title>Entry Permit</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        color: #000;
+        background: #ddd;
+      }
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 10mm auto;
+        background: #fff;
+        padding: 15mm;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+        }
+      }
+      h1 {
+        font-size: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 3px 6px;
+        vertical-align: top;
+      }
+      hr {
+        margin: 15px 0;
+      }
+      .side-box {
+        width: 90px;
+        height: 90px;
+        border: 1px dashed #999;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 9px;
+        color: #888;
+      }
+      .header-table td {
+        padding: 0;
+        vertical-align: middle;
+      }
+      .logo-box {
+        width: 60px;
+        height: 60px;
 
-  @page {
-    size: A4;
-    margin: 12mm;
-  }
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 8px;
+        color: #888;
+      }
+      .rules-table td {
+        width: 50%;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      .rules-table {
+        border: 1px solid #999;
+        margin-top: 15px;
+      }
+      .footer {
+        text-align: center;
+        font-size: 11px;
+        color: #555;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header (appears once) -->
+      <table class="header-table">
+        <tr>
+          <td style="width: 70px">
+            <img src="Image.png" class="logo-box" style="object-fit: cover" />
+          </td>
+          <td>
+            <h1 style="margin: 0">
+              Department of National Parks and Wildlife Conservations
+            </h1>
+            <h1 style="margin: 0">
+              राष्ट्रिय निकुञ्ज तथा वन्यजन्तु संरक्षण विभाग
+            </h1>
 
-  * {
-    box-sizing: border-box;
-  }
+            <p style="margin: 2px 0 0 0">Entry Permit / Entry Fee Receipt</p>
+          </td>
+        </tr>
+      </table>
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1a1a1a;
-    font-size: 11px;
-  }
+      <hr />
 
-  .page {
-    width: 186mm;
-    margin: 0 auto;
-  }
+      <!-- ============================================================
+    PERSON 1 — copy this whole block (from <table> to </table>,
+    including the <hr> after it) to add another person.
+    Just replace the placeholder text with real details.
+  ============================================================= -->
+      <table>
+        <tr>
+          <td style="width: 130px">Full Name :</td>
+          <td><b>Full Name</b></td>
+          <td rowspan="8" style="width: 100px; text-align: center">
+            <div class="side-box">QR / Stamp</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Passport No. :</td>
+          <td><b>Passport Number</b></td>
+        </tr>
+        <tr>
+          <td>Nationality :</td>
+          <td><b>Nationality</b></td>
+        </tr>
+        <tr>
+          <td>Destination :</td>
+          <td><b>Destination</b></td>
+        </tr>
+        <tr>
+          <td>Entry-Exit Date :</td>
+          <td><b>Entry Date - Exit Date</b></td>
+        </tr>
+        <tr>
+          <td>Permit Code :</td>
+          <td><b>Permit Code</b></td>
+        </tr>
+        <tr>
+          <td>Date of Issue :</td>
+          <td><b>Date of Issue</b></td>
+        </tr>
+        <tr>
+          <td>Permit Cost :</td>
+          <td><b>Permit Cost</b></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top: 8px">
+            Authorized Signature: <b>Signatory Name</b>
+          </td>
+        </tr>
+      </table>
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
+      <hr />
+      <!-- ===================== end of Person 1 block ===================== -->
 
-  /* ===== HEADER ===== */
-  .header-table {
-    border: 2px solid #0f4c5c;
-  }
+      <!-- ============================================================
+    PERSON 2 — same design repeated. Copy this block again for a
+    3rd, 4th, etc. person. The Rules box always stays below all
+    the person blocks, at the very bottom of the page.
+  ============================================================= -->
+      <table>
+        <tr>
+          <td style="width: 130px">Full Name :</td>
+          <td><b>Full Name</b></td>
+          <td rowspan="8" style="width: 100px; text-align: center">
+            <div class="side-box">QR / Stamp</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Passport No. :</td>
+          <td><b>Passport Number</b></td>
+        </tr>
+        <tr>
+          <td>Nationality :</td>
+          <td><b>Nationality</b></td>
+        </tr>
+        <tr>
+          <td>Destination :</td>
+          <td><b>Destination</b></td>
+        </tr>
+        <tr>
+          <td>Entry-Exit Date :</td>
+          <td><b>Entry Date - Exit Date</b></td>
+        </tr>
+        <tr>
+          <td>Permit Code :</td>
+          <td><b>Permit Code</b></td>
+        </tr>
+        <tr>
+          <td>Date of Issue :</td>
+          <td><b>Date of Issue</b></td>
+        </tr>
+        <tr>
+          <td>Permit Cost :</td>
+          <td><b>Permit Cost</b></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top: 8px">
+            Authorized Signature: <b>Signatory Name</b>
+          </td>
+        </tr>
+      </table>
 
-  .header-table td {
-    padding: 10px 14px;
-    vertical-align: middle;
-  }
+      <hr />
+      <!-- ===================== end of Person 2 block ===================== -->
 
-  .header-band {
-    background-color: #0f4c5c;
-  }
+      <!-- Rules box (appears once, always at the bottom of the page) -->
+      <table class="rules-table">
+        <tr>
+          <td
+            colspan="2"
+            style="
+              text-align: center;
+              font-weight: bold;
+              border-bottom: 1px solid #999;
+            "
+          >
+            RULES &amp; REGULATIONS / नियम तथा शर्तहरू
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ol>
+              <li>This permit is not transferable and not refundable.</li>
+              <li>Rubbish must be placed out.</li>
+              <li>Lighting fire is prohibited.</li>
+              <li>Movement between sunset to sunrise is prohibited.</li>
+              <li>The permit is for one person per entry only.</li>
+              <li>Guide is must for jungle walk.</li>
+              <li>Collecting any product is prohibited.</li>
+              <li>Please clean camping grounds before you leave.</li>
+            </ol>
+          </td>
+          <td style="border-left: 1px dashed #999">
+            <ol>
+              <li>यो अनुमतिपत्र हस्तान्तरण गर्न र फिर्ता पाउने छैन।</li>
+              <li>फोहोरमैला बाहिर राख्नुपर्नेछ।</li>
+              <li>आगो बाल्न निषेध गरिएको छ।</li>
+              <li>सूर्यास्तदेखि सूर्योदयसम्म हिँडडुल निषेध छ।</li>
+              <li>
+                यो अनुमतिपत्र प्रति व्यक्ति एक प्रवेशका लागि मात्र मान्य छ।
+              </li>
+              <li>जंगल भ्रमणका लागि गाइड अनिवार्य छ।</li>
+              <li>कुनै पनि वस्तु सङ्कलन गर्न निषेध छ।</li>
+              <li>फर्कनु अघि क्याम्पिङ क्षेत्र सफा गर्नुहोस्।</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
 
-  .logo-cell {
-    width: 70px;
-    text-align: center;
-    padding: 8px !important;
-  }
-
-  .logo-box {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border: 1px solid #cfe8ec;
-    color: #0f4c5c;
-    font-size: 7.5px;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  .text-cell {
-    padding-left: 4px !important;
-  }
-
-  .org-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 0 0 3px 0;
-    letter-spacing: 0.3px;
-  }
-
-  .doc-title {
-    font-size: 12.5px;
-    font-weight: bold;
-    color: #eaf6f8;
-    margin: 0 0 4px 0;
-  }
-
-  .schedule-line {
-    font-size: 9px;
-    color: #cfe8ec;
-    margin: 0;
-  }
-
-  .project-band {
-    background-color: #d9edf0;
-    border-top: 1px solid #0f4c5c;
-  }
-
-  .project-name {
-    font-size: 12.5px;
-    font-weight: bold;
-    color: #0f4c5c;
-    margin: 0;
-    padding: 5px 0;
-  }
-
-  /* ===== PERMIT META ===== */
-  .meta-table {
-    margin-top: 8px;
-    border: 1px solid #a9a9a9;
-  }
-
-  .meta-table td {
-    padding: 6px 9px;
-    border: 1px solid #a9a9a9;
-    font-size: 10px;
-  }
-
-  .meta-label {
-    font-weight: bold;
-    background-color: #f3f3f3;
-    color: #0f4c5c;
-    width: 30%;
-  }
-
-  /* ===== SECTION HEADINGS ===== */
-  .section-heading {
-    font-size: 11.5px;
-    font-weight: bold;
-    margin: 14px 0 5px 0;
-    padding: 4px 8px;
-    background-color: #0f4c5c;
-    color: #ffffff;
-  }
-
-  /* ===== ENTRANTS TABLE ===== */
-  .entrants-table {
-    border: 1px solid #a9a9a9;
-  }
-
-  .entrants-table th {
-    background-color: #d9edf0;
-    color: #0f4c5c;
-    font-size: 9.5px;
-    padding: 6px 4px;
-    border: 1px solid #a9a9a9;
-    text-align: left;
-  }
-
-  .entrants-table td {
-    font-size: 10px;
-    padding: 7px 4px;
-    border: 1px solid #a9a9a9;
-    height: 20px;
-  }
-
-  /* ===== RULES: English left / Nepali right ===== */
-  .rules-table {
-    border: 1px solid #a9a9a9;
-  }
-
-  .rules-table td {
-    vertical-align: top;
-    padding: 10px 12px;
-    border: 1px solid #a9a9a9;
-    width: 50%;
-    font-size: 10px;
-    line-height: 1.6;
-  }
-
-  .rules-col-heading {
-    font-weight: bold;
-    font-size: 10.5px;
-    margin: 0 0 7px 0;
-    color: #0f4c5c;
-    border-bottom: 1px solid #0f4c5c;
-    padding-bottom: 3px;
-  }
-
-  .rules-list {
-    margin: 0;
-    padding-left: 15px;
-  }
-
-  .rules-list li {
-    margin-bottom: 5px;
-  }
-
-  .nepali {
-    font-family: "Nirmala UI", "Mangal", "Noto Sans Devanagari", Arial, sans-serif;
-  }
-
-  /* ===== SIGNATURE ===== */
-  .signature-table {
-    margin-top: 16px;
-  }
-
-  .signature-table td {
-    width: 50%;
-    padding: 0 8px;
-    vertical-align: bottom;
-  }
-
-  .signature-line {
-    border-top: 1px solid #1a1a1a;
-    margin-top: 26px;
-    padding-top: 4px;
-    font-size: 9.5px;
-    text-align: center;
-  }
-
-  .footer-note {
-    margin-top: 12px;
-    font-size: 8px;
-    color: #666666;
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-<div class="page">
-
-  <!-- ===== HEADER ===== -->
-  <table class="header-table">
-    <tr class="header-band">
-      <td class="logo-cell">
-        <table>
-          <tr><td class="logo-box">LOGO</td></tr>
-        </table>
-      </td>
-      <td class="text-cell">
-        <p class="org-name">NATIONAL TRUST FOR NATURE CONSERVATION</p>
-        <p class="doc-title">Entry Permit / Entry Fee Receipt</p>
-        <p class="schedule-line">Schedule - 2 (Relating to Rule 19, Sub-Rule [1] of Conservation Area Management Rules 2053)</p>
-      </td>
-    </tr>
-    <tr class="project-band">
-      <td colspan="2">
-        <p class="project-name">Annapurna Conservation Area Project (ACAP)</p>
-      </td>
-    </tr>
-  </table>
-
-  <!-- ===== PERMIT META ===== -->
-  <table class="meta-table">
-    <tr>
-      <td class="meta-label">Destination</td>
-      <td>&nbsp;</td>
-      <td class="meta-label">Permit Code</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Entry - Exit Date</td>
-      <td>&nbsp;</td>
-      <td class="meta-label">Date of Issue</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Permit Cost</td>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-  </table>
-
-  <!-- ===== ENTRANTS (duplicate <tr> rows for more people) ===== -->
-  <p class="section-heading">Entrant Details</p>
-  <table class="entrants-table">
-    <tr>
-      <th style="width:6%;">S.N.</th>
-      <th style="width:24%;">Full Name</th>
-      <th style="width:18%;">Passport No.</th>
-      <th style="width:14%;">Nationality</th>
-      <th style="width:10%;">Gender</th>
-      <th style="width:28%;">Remarks</th>
-    </tr>
-    <tr><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-    <tr><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-    <tr><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-    <tr><td>4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-    <tr><td>5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-  </table>
-
-  <!-- ===== RULES: English left, Nepali right ===== -->
-  <p class="section-heading">Important Notes / महत्वपूर्ण जानकारी</p>
-  <table class="rules-table">
-    <tr>
-      <td>
-        <p class="rules-col-heading">Rules and Regulations</p>
-        <ol class="rules-list">
-          <li>This permit is not transferable and not refundable.</li>
-          <li>Rubbish must be placed out.</li>
-          <li>Lighting fire is prohibited.</li>
-          <li>Movement between sunset to sunrise is prohibited.</li>
-          <li>The permit is for one person per entry only.</li>
-          <li>Guide is must for jungle walk.</li>
-          <li>Collecting any product is prohibited.</li>
-          <li>Please clean camping grounds before you leave.</li>
-        </ol>
-      </td>
-      <td class="nepali">
-        <p class="rules-col-heading">नियम तथा शर्तहरू</p>
-        <ol class="rules-list">
-          <li>यो अनुमति पत्र हस्तान्तरण गर्न र फिर्ता पाउन मिल्दैन ।</li>
-          <li>फोहोरमैला तोकिएको ठाउँमा राख्नुपर्नेछ ।</li>
-          <li>आगो बाल्न निषेध गरिएको छ ।</li>
-          <li>सूर्यास्त देखि सूर्योदयसम्म ओहोरदोहोर गर्न निषेध गरिएको छ ।</li>
-          <li>यो अनुमति पत्र प्रति प्रवेश एक व्यक्तिको लागि मात्र मान्य हुनेछ ।</li>
-          <li>जंगल पैदल यात्राका लागि गाइड अनिवार्य छ ।</li>
-          <li>कुनै पनि वस्तु संकलन गर्न निषेध गरिएको छ ।</li>
-          <li>फर्कनु अघि क्याम्पिङ स्थल सफा गर्नुहोस् ।</li>
-        </ol>
-      </td>
-    </tr>
-  </table>
-
-  <!-- ===== SIGNATURE ===== -->
-  <table class="signature-table">
-    <tr>
-      <td>
-        <div class="signature-line">Authorized Signature</div>
-      </td>
-      <td>
-        <div class="signature-line">Date</div>
-      </td>
-    </tr>
-  </table>
-
-  <p class="footer-note">Please verify the Nepali translation above against the original document before official use.</p>
-
-</div>
-</body>
+      <!-- Footer (appears once) -->
+      <div class="footer">
+        <!-- National Trust for Nature Conservation — Annapurna Conservation Area Project (ACAP) -->
+      </div>
+    </div>
+  </body>
 </html>
