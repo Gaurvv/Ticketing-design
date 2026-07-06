@@ -1,15 +1,242 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>hello</h1>
-        <script src="" async defer></script>
-    </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Entry Permit</title>
+<style>
+  @page { size: A4; margin: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #000;
+    background: #ddd;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: #fff;
+    padding: 15mm;
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; }
+  }
+  h1 {
+    font-size: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 3px 6px;
+    vertical-align: top;
+  }
+  hr {
+    margin: 15px 0;
+  }
+  .side-box {
+    width: 90px;
+    height: 90px;
+    border: 1px dashed #999;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 9px;
+    color: #888;
+  }
+  .header-table td {
+    padding: 0;
+    vertical-align: middle;
+  }
+  .logo-box {
+    width: 60px;
+    height: 60px;
+   
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 8px;
+    color: #888;
+  }
+  .rules-table td {
+    width: 50%;
+    padding: 8px 10px;
+    vertical-align: top;
+  }
+  .rules-table {
+    border: 1px solid #999;
+    margin-top: 15px;
+  }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header (appears once) -->
+  <table class="header-table">
+    <tr>
+      <td style="width:70px;">
+        <img src="Image.png" class="logo-box" style="object-fit: cover;">
+      </td>
+      <td>
+        <h1 style="margin:0;">Department of National Parks and Wildlife Conservations</h1>
+        <p style="margin:2px 0 0 0;">Entry Permit / Entry Fee Receipt</p>
+        <!-- <p style="font-size:11px; margin:2px 0 0 0;">Schedule -2 (Relating to Rule 19, Sub-Rule[1] of Conservation Area Management Rules 2053)</p> -->
+      </td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <!-- ============================================================
+    PERSON 1 — copy this whole block (from <table> to </table>,
+    including the <hr> after it) to add another person.
+    Just replace the placeholder text with real details.
+  ============================================================= -->
+  <table>
+    <tr>
+      <td style="width:130px;">Full Name :</td>
+      <td><b>Full Name</b></td>
+      <td rowspan="8" style="width:100px; text-align:center;">
+        <div class="side-box">QR / Stamp</div>
+        <div style="margin-top:6px; font-size:12px; font-weight:bold;">Permit Number</div>
+      </td>
+    </tr>
+    <tr>
+      <td>Passport No. :</td>
+      <td><b>Passport Number</b></td>
+    </tr>
+    <tr>
+      <td>Nationality :</td>
+      <td><b>Nationality</b></td>
+    </tr>
+    <tr>
+      <td>Destination :</td>
+      <td><b>Destination</b></td>
+    </tr>
+    <tr>
+      <td>Entry-Exit Date :</td>
+      <td><b>Entry Date - Exit Date</b></td>
+    </tr>
+    <tr>
+      <td>Permit Code :</td>
+      <td><b>Permit Code</b></td>
+    </tr>
+    <tr>
+      <td>Date of Issue :</td>
+      <td><b>Date of Issue</b></td>
+    </tr>
+    <tr>
+      <td>Permit Cost :</td>
+      <td><b>Permit Cost</b></td>
+    </tr>
+    <tr>
+      <td colspan="3" style="padding-top:8px;">Authorized Signature: <b>Signatory Name</b></td>
+    </tr>
+  </table>
+
+  <hr>
+  <!-- ===================== end of Person 1 block ===================== -->
+
+  <!-- ============================================================
+    PERSON 2 — same design repeated. Copy this block again for a
+    3rd, 4th, etc. person. The Rules box always stays below all
+    the person blocks, at the very bottom of the page.
+  ============================================================= -->
+  <table>
+    <tr>
+      <td style="width:130px;">Full Name :</td>
+      <td><b>Full Name</b></td>
+      <td rowspan="8" style="width:100px; text-align:center;">
+        <div class="side-box">QR / Stamp</div>
+        <div style="margin-top:6px; font-size:12px; font-weight:bold;">Permit Number</div>
+      </td>
+    </tr>
+    <tr>
+      <td>Passport No. :</td>
+      <td><b>Passport Number</b></td>
+    </tr>
+    <tr>
+      <td>Nationality :</td>
+      <td><b>Nationality</b></td>
+    </tr>
+    <tr>
+      <td>Destination :</td>
+      <td><b>Destination</b></td>
+    </tr>
+    <tr>
+      <td>Entry-Exit Date :</td>
+      <td><b>Entry Date - Exit Date</b></td>
+    </tr>
+    <tr>
+      <td>Permit Code :</td>
+      <td><b>Permit Code</b></td>
+    </tr>
+    <tr>
+      <td>Date of Issue :</td>
+      <td><b>Date of Issue</b></td>
+    </tr>
+    <tr>
+      <td>Permit Cost :</td>
+      <td><b>Permit Cost</b></td>
+    </tr>
+    <tr>
+      <td colspan="3" style="padding-top:8px;">Authorized Signature: <b>Signatory Name</b></td>
+    </tr>
+  </table>
+
+  <hr>
+  <!-- ===================== end of Person 2 block ===================== -->
+
+  <!-- Rules box (appears once, always at the bottom of the page) -->
+  <table class="rules-table">
+    <tr>
+      <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:1px solid #999;">
+        RULES &amp; REGULATIONS / नियम तथा शर्तहरू
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <ol>
+          <li>This permit is not transferable and not refundable.</li>
+          <li>Rubbish must be placed out.</li>
+          <li>Lighting fire is prohibited.</li>
+          <li>Movement between sunset to sunrise is prohibited.</li>
+          <li>The permit is for one person per entry only.</li>
+          <li>Guide is must for jungle walk.</li>
+          <li>Collecting any product is prohibited.</li>
+          <li>Please clean camping grounds before you leave.</li>
+        </ol>
+      </td>
+      <td style="border-left:1px dashed #999;">
+        <ol>
+          <li>यो अनुमतिपत्र हस्तान्तरण गर्न र फिर्ता पाउने छैन।</li>
+          <li>फोहोरमैला बाहिर राख्नुपर्नेछ।</li>
+          <li>आगो बाल्न निषेध गरिएको छ।</li>
+          <li>सूर्यास्तदेखि सूर्योदयसम्म हिँडडुल निषेध छ।</li>
+          <li>यो अनुमतिपत्र प्रति व्यक्ति एक प्रवेशका लागि मात्र मान्य छ।</li>
+          <li>जंगल भ्रमणका लागि गाइड अनिवार्य छ।</li>
+          <li>कुनै पनि वस्तु सङ्कलन गर्न निषेध छ।</li>
+          <li>फर्कनु अघि क्याम्पिङ क्षेत्र सफा गर्नुहोस्।</li>
+        </ol>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Footer (appears once) -->
+  <div class="footer">
+    <!-- National Trust for Nature Conservation — Annapurna Conservation Area Project (ACAP) -->
+  </div>
+
+</div>
+
+</body>
 </html>
