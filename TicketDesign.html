@@ -1,256 +1,273 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Entry Permit</title>
-    <style>
-      @page {
-        size: A4;
-        margin: 0;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        font-size: 13px;
-        color: #000;
-        background: #ddd;
-      }
-      .page {
-        width: 210mm;
-        min-height: 297mm;
-        margin: 10mm auto;
-        background: #fff;
-        padding: 15mm;
-      }
-      @media print {
-        body {
-          background: #fff;
-        }
-        .page {
-          margin: 0;
-        }
-      }
-      h1 {
-        font-size: 16px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      td {
-        padding: 3px 6px;
-        vertical-align: top;
-      }
-      hr {
-        margin: 15px 0;
-      }
-      .side-box {
-        width: 90px;
-        height: 90px;
-        border: 1px dashed #999;
-        text-align: center;
-        vertical-align: middle;
-        font-size: 9px;
-        color: #888;
-      }
-      .header-table td {
-        padding: 0;
-        vertical-align: middle;
-      }
-      .logo-box {
-        width: 60px;
-        height: 60px;
+<head>
+<meta charset="UTF-8">
+<title>Entry Permit</title>
+<style>
+  /* PDF/print handles its own margin via .page padding below, so @page itself has none.
+     This avoids the "double margin" bug where a 210mm-wide box no longer fits inside an
+     already-margined page, which is what was forcing the whole layout to be squeezed. */
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #000;
+    background: #ddd;
+  }
 
-        border-radius: 50%;
-        text-align: center;
-        vertical-align: middle;
-        font-size: 8px;
-        color: #888;
-      }
-      .rules-table td {
-        width: 50%;
-        padding: 8px 10px;
-        vertical-align: top;
-      }
-      .rules-table {
-        border: 1px solid #999;
-        margin-top: 15px;
-      }
-      .footer {
-        text-align: center;
-        font-size: 11px;
-        color: #555;
-        margin-top: 15px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <!-- Header (appears once) -->
-      <table class="header-table">
-        <tr>
-          <td style="width: 70px">
-            <img src="Image.png" class="logo-box" style="object-fit: cover" />
-          </td>
-          <td>
-            <h1 style="margin: 0">
-              Department of National Parks and Wildlife Conservations
-            </h1>
-            <h1 style="margin: 0">
-              राष्ट्रिय निकुञ्ज तथा वन्यजन्तु संरक्षण विभाग
-            </h1>
+  /* A4 page: true 210mm x 297mm box. margin=10mm centers it on screen; padding=12mm is the
+     printed page's inner margin. */
+  .a4-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    padding: 12mm;
+    background: #fff;
+    transform-origin: top center;
+  }
 
-            <p style="margin: 2px 0 0 0">Entry Permit / Entry Fee Receipt</p>
-          </td>
-        </tr>
-      </table>
+  /* Screen-only: scale the page down on narrow viewports so it's never cut off / cramped
+     in a small preview window. Pure CSS, no JavaScript. Print/PDF always ignores this. */
+  @media screen and (max-width: 900px) { .page { zoom: 0.65; } }
+  @media screen and (max-width: 650px) { .page { zoom: 0.45; } }
+  @media screen and (max-width: 420px) { .page { zoom: 0.32; } }
 
-      <hr />
-      <table>
-        <tr>
-          <td style="width: 130px">Full Name :</td>
-          
-          <td><b>Full Name</b></td>
-          <td rowspan="8" style="width: 100px; text-align: center">
-            <div class="side-box">QR / Stamp</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Passport No. :</td>
-          <td><b>Passport Number</b></td>
-        </tr>
-        <tr>
-          <td>Nationality :</td>
-          <td><b>Nationality</b></td>
-        </tr>
-        <tr>
-          <td>Destination :</td>
-          <td><b>Destination</b></td>
-        </tr>
-        <tr>
-          <td>Entry-Exit Date :</td>
-          <td><b>Entry Date - Exit Date</b></td>
-        </tr>
-        <tr>
-          <td>Permit Code :</td>
-          <td><b>Permit Code</b></td>
-        </tr>
-        <tr>
-          <td>Date of Issue :</td>
-          <td><b>Date of Issue</b></td>
-        </tr>
-        <tr>
-          <td>Permit Cost :</td>
-          <td><b>Permit Cost</b></td>
-        </tr>
-        <tr>
-          <td colspan="3" style="padding-top: 8px">
-            Authorized Signature: <b>Signatory Name</b>
-          </td>
-        </tr>
-      </table>
+  @media print {
+    body { background: #fff; }
+    .a4-wrapper { overflow: visible; width: auto; }
+    .page { width: auto; min-height: 0; margin: 0; zoom: 1 !important; }
+  }
 
-      <hr />
-      <!-- ===================== end of Person 1 block ===================== -->
+  h1 { font-size: 15px; }
 
-      <!-- ============================================================
-    PERSON 2 — same design repeated. Copy this block again for a
-    3rd, 4th, etc. person. The Rules box always stays below all
-    the person blocks, at the very bottom of the page.
-  ============================================================= -->
-      <table>
-        <tr>
-          <td style="width: 130px">Full Name :</td>
-          <td><b>Full Name</b></td>
-          <td rowspan="8" style="width: 100px; text-align: center">
-            <div class="side-box">QR / Stamp</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Passport No. :</td>
-          <td><b>Passport Number</b></td>
-        </tr>
-        <tr>
-          <td>Nationality :</td>
-          <td><b>Nationality</b></td>
-        </tr>
-        <tr>
-          <td>Destination :</td>
-          <td><b>Destination</b></td>
-        </tr>
-        <tr>
-          <td>Entry-Exit Date :</td>
-          <td><b>Entry Date - Exit Date</b></td>
-        </tr>
-        <tr>
-          <td>Permit Code :</td>
-          <td><b>Permit Code</b></td>
-        </tr>
-        <tr>
-          <td>Date of Issue :</td>
-          <td><b>Date of Issue</b></td>
-        </tr>
-        <tr>
-          <td>Permit Cost :</td>
-          <td><b>Permit Cost</b></td>
-        </tr>
-        <tr>
-          <td colspan="3" style="padding-top: 8px">
-            Authorized Signature: <b>Signatory Name</b>
-          </td>
-        </tr>
-      </table>
+  .header-table { width: 100%; border-collapse: collapse; }
+  .header-table td { padding: 0; vertical-align: middle; }
+  .logo-box {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 8px;
+    color: #888;
+  }
 
-      <hr />
-      <!-- ===================== end of Person 2 block ===================== -->
+  hr { margin: 10px 0; border: none; border-top: 1px solid #999; }
 
-      <!-- Rules box (appears once, always at the bottom of the page) -->
-      <table class="rules-table">
-        <tr>
-          <td
-            colspan="2"
-            style="
-              text-align: center;
-              font-weight: bold;
-              border-bottom: 1px solid #999;
-            "
-          >
-            RULES &amp; REGULATIONS / नियम तथा शर्तहरू
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <ol>
-              <li>This permit is not transferable and not refundable.</li>
-              <li>Rubbish must be placed out.</li>
-              <li>Lighting fire is prohibited.</li>
-              <li>Movement between sunset to sunrise is prohibited.</li>
-              <li>The permit is for one person per entry only.</li>
-              <li>Guide is must for jungle walk.</li>
-              <li>Collecting any product is prohibited.</li>
-              <li>Please clean camping grounds before you leave.</li>
-            </ol>
-          </td>
-          <td style="border-left: 1px dashed #999">
-            <ol>
-              <li>यो अनुमतिपत्र हस्तान्तरण गर्न र फिर्ता पाउने छैन।</li>
-              <li>फोहोरमैला बाहिर राख्नुपर्नेछ।</li>
-              <li>आगो बाल्न निषेध गरिएको छ।</li>
-              <li>सूर्यास्तदेखि सूर्योदयसम्म हिँडडुल निषेध छ।</li>
-              <li>
-                यो अनुमतिपत्र प्रति व्यक्ति एक प्रवेशका लागि मात्र मान्य छ।
-              </li>
-              <li>जंगल भ्रमणका लागि गाइड अनिवार्य छ।</li>
-              <li>कुनै पनि वस्तु सङ्कलन गर्न निषेध छ।</li>
-              <li>फर्कनु अघि क्याम्पिङ क्षेत्र सफा गर्नुहोस्।</li>
-            </ol>
-          </td>
-        </tr>
-      </table>
+  /* Park banner + single QR row */
+  .park-row {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 10px 0;
+  }
+  .park-row td { vertical-align: middle; padding: 0; }
+  .park-banner {
+    background: #f0f4ec;
+    border: 1px solid #4a7c3f;
+    border-left: 6px solid #4a7c3f;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #2f4f2a;
+  }
+  .park-banner .np {
+    font-weight: normal;
+    font-size: 11px;
+    display: block;
+    color: #3d5c37;
+    margin-top: 2px;
+  }
+  .qr-cell {
+    text-align: center;
+    width: 80px;
+    padding-left: 8px;
+  }
+  .qr-caption { font-size: 8px; color: #777; margin-top: 2px; }
 
-      <!-- Footer (appears once) -->
-      <div class="footer">
-        <!-- National Trust for Nature Conservation — Annapurna Conservation Area Project (ACAP) -->
-      </div>
+  /* Permit details table */
+  .permit-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 8px 0 6px 0;
+  }
+  .permit-table th {
+    background: #eef2ea;
+    border: 1px solid #999;
+    padding: 5px 4px;
+    text-align: left;
+    font-size: 10px;
+  }
+  .permit-table td {
+    border: 1px solid #999;
+    padding: 5px 4px;
+    font-size: 10px;
+    word-wrap: break-word;
+  }
+  .permit-table td.sn { text-align: center; }
+  .permit-table thead { display: table-header-group; }
+  .permit-table tr { page-break-inside: avoid; }
+
+  /* Signature placeholder outside/right of the table */
+  .signature-area { width: 100%; margin-top: 24px; }
+  .signature-box { float: right; width: 55mm; text-align: center; }
+  .signature-line { border-bottom: 1px solid #000; height: 34px; }
+  .signature-label { font-size: 10px; margin-top: 4px; color: #333; }
+  .clearfix::after { content: ""; display: table; clear: both; }
+
+  .rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #999;
+    margin-top: 22px;
+  }
+  .rules-table td { width: 50%; padding: 8px 10px; vertical-align: top; font-size: 10.5px; }
+  .rules-table ol { margin: 4px 0; padding-left: 18px; }
+
+  .footer { text-align: center; font-size: 10px; color: #555; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<div class="a4-wrapper">
+<div class="page">
+
+  <!-- Header -->
+  <table class="header-table">
+    <tr>
+      <td style="width:65px;">
+        <img src="Image.png" class="logo-box" style="object-fit: cover;">
+      </td>
+      <td>
+        <h1 style="margin:0;">Department of National Parks and Wildlife Conservations</h1>
+        <h1 style="margin:0;">राष्ट्रिय निकुञ्ज तथा वन्यजन्तु संरक्षण विभाग</h1>
+        <p style="margin:2px 0 0 0;">Entry Permit / Entry Fee Receipt</p>
+      </td>
+    </tr>
+  </table>
+
+  <hr />
+
+  <!-- Park banner + QR -->
+  <table class="park-row">
+    <tr>
+      <td class="park-banner">
+        Park / Conservation Area: Shivapuri Nagarjun National Park
+        <span class="np">निकुञ्ज / संरक्षण क्षेत्र : शिवपुरी नागार्जुन राष्ट्रिय निकुञ्ज</span>
+      </td>
+      <td class="qr-cell">
+        <svg width="65" height="65" viewBox="0 0 65 65" xmlns="http://www.w3.org/2000/svg" style="background:#fff;"><rect x="0" y="0" width="65" height="65" fill="#fff"/><rect x="8.67" y="0" width="4.33" height="4.33" fill="#000"/><rect x="13" y="0" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="0" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="0" width="4.33" height="4.33" fill="#000"/><rect x="52" y="0" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="0" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="17.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="26" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="30.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="39" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="13" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="60.67" y="8.67" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="13" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="13" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="13" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="13" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="13" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="17.33" width="4.33" height="4.33" fill="#000"/><rect x="52" y="17.33" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="17.33" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="26" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="60.67" y="21.67" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="26" width="4.33" height="4.33" fill="#000"/><rect x="34.67" y="26" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="26" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="17.33" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="39" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="52" y="30.33" width="4.33" height="4.33" fill="#000"/><rect x="0" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="34.67" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="39" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="52" y="34.67" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="39" width="4.33" height="4.33" fill="#000"/><rect x="13" y="39" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="39" width="4.33" height="4.33" fill="#000"/><rect x="26" y="39" width="4.33" height="4.33" fill="#000"/><rect x="52" y="39" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="39" width="4.33" height="4.33" fill="#000"/><rect x="0" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="13" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="17.33" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="30.33" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="43.33" width="4.33" height="4.33" fill="#000"/><rect x="13" y="47.67" width="4.33" height="4.33" fill="#000"/><rect x="17.33" y="47.67" width="4.33" height="4.33" fill="#000"/><rect x="30.33" y="47.67" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="47.67" width="4.33" height="4.33" fill="#000"/><rect x="56.33" y="47.67" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="52" width="4.33" height="4.33" fill="#000"/><rect x="21.67" y="52" width="4.33" height="4.33" fill="#000"/><rect x="26" y="52" width="4.33" height="4.33" fill="#000"/><rect x="43.33" y="52" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="52" width="4.33" height="4.33" fill="#000"/><rect x="60.67" y="52" width="4.33" height="4.33" fill="#000"/><rect x="0" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="4.33" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="8.67" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="13" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="26" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="34.67" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="47.67" y="56.33" width="4.33" height="4.33" fill="#000"/><rect x="0" y="60.67" width="4.33" height="4.33" fill="#000"/><rect x="13" y="60.67" width="4.33" height="4.33" fill="#000"/><rect x="34.67" y="60.67" width="4.33" height="4.33" fill="#000"/><rect x="52" y="60.67" width="4.33" height="4.33" fill="#000"/><rect x="0" y="0" width="13" height="13" fill="#fff" stroke="#000" stroke-width="2.17"/><rect x="4.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="52" y="0" width="13" height="13" fill="#fff" stroke="#000" stroke-width="2.17"/><rect x="56.33" y="4.33" width="4.33" height="4.33" fill="#000"/><rect x="0" y="52" width="13" height="13" fill="#fff" stroke="#000" stroke-width="2.17"/><rect x="4.33" y="56.33" width="4.33" height="4.33" fill="#000"/></svg>
+        <div class="qr-caption">QR</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Permit details -->
+  <table class="permit-table">
+    <thead>
+      <tr>
+        <th style="width:6%;">S.N.</th>
+        <th style="width:16%;">Full Name</th>
+        <th style="width:13%;">Passport No.</th>
+        <th style="width:11%;">Nationality</th>
+        <th style="width:11%;">Destination</th>
+        <th style="width:12%;">Entry-Exit Date</th>
+        <th style="width:11%;">Permit Code</th>
+        <th style="width:10%;">Date of Issue</th>
+        <th style="width:10%;">Permit Cost (incl. 13% VAT)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sn">1</td>
+        <td><b>Gaurav Dhungana</b></td>
+        <td>212121212121</td>
+        <td>Nepali</td>
+        <td>Shivapuri</td>
+        <td>121212</td>
+        <td>2121212</td>
+        <td>21212121</td>
+        <td>1130.00</td>
+      </tr>
+      <tr>
+        <td class="sn">2</td>
+        <td><b>Sita Sharma</b></td>
+        <td>343434343434</td>
+        <td>Nepali</td>
+        <td>Shivapuri</td>
+        <td>131313</td>
+        <td>3131313</td>
+        <td>31313131</td>
+        <td>1130.00</td>
+      </tr>
+      <tr>
+        <td class="sn">3</td>
+        <td><b>John Miller</b></td>
+        <td>PA4455667</td>
+        <td>American</td>
+        <td>Shivapuri</td>
+        <td>141414</td>
+        <td>4141414</td>
+        <td>41414141</td>
+        <td>3390.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Signature -->
+  <div class="signature-area clearfix">
+    <div class="signature-box">
+      <div class="signature-line"></div>
+      <div class="signature-label">Authorized Signature</div>
     </div>
-  </body>
+  </div>
+
+  <!-- Rules box -->
+  <table class="rules-table">
+    <tr>
+      <td colspan="2" style="text-align:center; font-weight:bold; border-bottom:1px solid #999;">
+        RULES &amp; REGULATIONS / नियम तथा शर्तहरू
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <ol>
+          <li>This permit is not transferable and not refundable.</li>
+          <li>Rubbish must be placed out.</li>
+          <li>Lighting fire is prohibited.</li>
+          <li>Movement between sunset to sunrise is prohibited.</li>
+          <li>The permit is for one person per entry only.</li>
+          <li>Guide is must for jungle walk.</li>
+          <li>Collecting any product is prohibited.</li>
+          <li>Please clean camping grounds before you leave.</li>
+        </ol>
+      </td>
+      <td style="border-left:1px dashed #999;">
+        <ol>
+          <li>यो अनुमतिपत्र हस्तान्तरण गर्न र फिर्ता पाउने छैन।</li>
+          <li>फोहोरमैला बाहिर राख्नुपर्नेछ।</li>
+          <li>आगो बाल्न निषेध गरिएको छ।</li>
+          <li>सूर्यास्तदेखि सूर्योदयसम्म हिँडडुल निषेध छ।</li>
+          <li>यो अनुमतिपत्र प्रति व्यक्ति एक प्रवेशका लागि मात्र मान्य छ।</li>
+          <li>जंगल भ्रमणका लागि गाइड अनिवार्य छ।</li>
+          <li>कुनै पनि वस्तु सङ्कलन गर्न निषेध छ।</li>
+          <li>फर्कनु अघि क्याम्पिङ क्षेत्र सफा गर्नुहोस्।</li>
+        </ol>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Footer -->
+  <div class="footer"></div>
+
+</div>
+</div>
+
+</body>
 </html>
